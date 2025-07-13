@@ -1,6 +1,5 @@
 // Season validation and utilities
 export function isValidSeasonId(season: string): boolean {
-    if (season === 'now') return true;
     // Check if it's 8 digits
     if (!/^\d{8}$/.test(season)) return false;
 

@@ -7,7 +7,7 @@ export type TeamAbbreviation =
   | 'UTA';
 
 // NHL Season ID format: <seasonStartYear><seasonEndYear> (e.g., 20232024 for 2023-24 season)
-export type SeasonId = `${number}${number}${number}${number}${number}${number}${number}${number}` | 'now';
+export type SeasonId = `${number}${number}${number}${number}${number}${number}${number}${number}`;
 
 // Common base types
 export interface LocalizedText {

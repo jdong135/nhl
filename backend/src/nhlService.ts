@@ -11,7 +11,7 @@ export async function getSchedule(date: Date): Promise<ScheduleResponse> {
     return response.data;
 }
 
-export async function getClubSchedule(teamAbbrev: TeamAbbreviation, season: SeasonId | 'now'): Promise<ClubScheduleResponse> {
+export async function getClubSchedule(teamAbbrev: TeamAbbreviation, season: SeasonId): Promise<ClubScheduleResponse> {
     if (!isValidSeasonId(season)) {
         throw new Error('Invalid season ID');
     }
