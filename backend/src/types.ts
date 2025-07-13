@@ -1,4 +1,72 @@
-// NHL API Response Types
+// NHL Team Abbreviations
+export type TeamAbbreviation = 
+  | 'ANA' | 'ARI' | 'BOS' | 'BUF' | 'CAR' | 'CBJ' | 'CGY' | 'CHI' 
+  | 'COL' | 'DAL' | 'DET' | 'EDM' | 'FLA' | 'LAK' | 'MIN' | 'MTL' 
+  | 'NJD' | 'NSH' | 'NYI' | 'NYR' | 'OTT' | 'PHI' | 'PIT' | 'SEA' 
+  | 'SJS' | 'STL' | 'TBL' | 'TOR' | 'VAN' | 'VGK' | 'WSH' | 'WPG'
+  | 'UTA';
+
+// NHL Season ID format: <seasonStartYear><seasonEndYear> (e.g., 20232024 for 2023-24 season)
+export type SeasonId = `${number}${number}${number}${number}${number}${number}${number}${number}` | 'now';
+
+// /club-schedule-season response type
+export interface ClubTeamInfo {
+  id: number;
+  commonName: {
+    default: string;
+    fr?: string;
+  };
+  placeName: {
+    default: string;
+    fr?: string;
+  };
+  placeNameWithPreposition: {
+    default: string;
+    fr?: string;
+  };
+  abbrev: string;
+  logo: string;
+  darkLogo: string;
+  awaySplitSquad?: boolean;
+  homeSplitSquad?: boolean;
+  radioLink: string;
+}
+
+export interface ClubGame {
+  id: number;
+  season: number;
+  gameType: number;
+  gameDate: string;
+  venue: {
+    default: string;
+  };
+  neutralSite: boolean;
+  startTimeUTC: string;
+  easternUTCOffset: string;
+  venueUTCOffset: string;
+  venueTimezone: string;
+  gameState: string;
+  gameScheduleState: string;
+  tvBroadcasts: any[]; // Empty array in the example
+  awayTeam: ClubTeamInfo;
+  homeTeam: ClubTeamInfo;
+  periodDescriptor: {
+    maxRegulationPeriods: number;
+  };
+  ticketsLink: string;
+  ticketsLinkFr: string;
+  gameCenterLink: string;
+}
+
+export interface ClubScheduleResponse {
+  previousSeason: number;
+  currentSeason: number;
+  clubTimezone: string;
+  clubUTCOffset: string;
+  games: ClubGame[];
+}
+
+// /schedule response type
 export interface TVBroadcast {
   id: number;
   market: string;
